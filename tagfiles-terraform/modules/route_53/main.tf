@@ -2,6 +2,7 @@
 
 resource "aws_route53_zone" "primary" {
   name = "tagifiles.io"
+ // depends_on = [ aws_alb.non-prod-alb.dns_name ]
 }
 
 resource "aws_route53_record" "openvpn" {

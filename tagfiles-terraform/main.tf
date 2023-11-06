@@ -22,6 +22,7 @@ module "aws_elasticache" {
 
 module "ec2" {
   source = "./modules/ec2"
+  depends_on = [ module.vpc ]
 }
 
 
@@ -35,6 +36,7 @@ module "ecs" {
 
 module "efs" {
   source = "./modules/efs"
+  depends_on = [ module.vpc ]
 }
 
 module "flowlog_iam_cloudwatch" {
@@ -47,10 +49,12 @@ module "openvpn_ec2" {
 
 module "rds" {
   source = "./modules/rds"
+  depends_on = [ module.vpc ]
 }
 
 module "route_53" {
   source = "./modules/route_53"
+  depends_on = [ module.alb ]
 }
 
 module "s3_buckets" {
