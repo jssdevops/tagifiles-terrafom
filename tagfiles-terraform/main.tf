@@ -2,7 +2,7 @@
 provider "aws" {
   region  = "eu-central-1"
   profile = "signiance-tagifiles-tf"
-
+  
   }
 
 
@@ -12,6 +12,7 @@ module "acm" {
 
 module "alb" {
     source = "./modules/alb"
+    depends_on = [ module.vpc ]
   
 }
 
@@ -32,7 +33,8 @@ module "ecr" {
 
 module "ecs" {
   source = "./modules/ecs"
-}
+  
+  }
 
 module "efs" {
   source = "./modules/efs"
